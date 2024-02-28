@@ -1,4 +1,12 @@
-export const ModalRemoveUserFromMatch = ({ handleRemoveFromGame, userId }) => {
+interface ModalProp {
+  handleRemoveFromGame: (arg: number) => void;
+  userId: number;
+}
+
+export const ModalRemoveUserFromMatch = ({
+  handleRemoveFromGame,
+  userId,
+}: ModalProp) => {
   return (
     <div className=" h-full   fixed top-0 left-0 bottom-0 right-0 flex items-center justify-center">
       <div className="bg-white   border border-gray-400 rounded-lg  tablet:w-[340px] mobile:w-full mobile:h-[236px]  p-4 flex  flex-col justify-between items-center text-[14px] ">

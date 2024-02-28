@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { UserLogin } from "../../pages/UserLoginPage";
+import { UserLoginPage } from "../../pages/UserLoginPage";
 
 describe("Tests DOM Rendering on User Login Page", () => {
   test("User Input Email Element exists", () => {
@@ -11,7 +11,7 @@ describe("Tests DOM Rendering on User Login Page", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UserLogin />
+          <UserLoginPage />
         </MemoryRouter>
       </QueryClientProvider>
     );

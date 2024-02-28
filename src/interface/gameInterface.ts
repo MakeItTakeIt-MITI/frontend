@@ -65,20 +65,39 @@ export interface GameDetailProp {
     handleCloseModal: () => void;
 }
 
+export interface PlayerInfo {
+
+    id: number;
+    player_name: string;
+    player_phone: string;
+    player_height: number;
+    player_account_holder: string;
+    player_account_bank: string;
+    player_account_number: string;
+    participation_status: string;
+
+
+}
+
 export interface ParticipantsField {
-    participantsData: {
-        data: {
-            id: number;
-            planyer_name: string;
-            player_phone: string;
-        }
+    id: number;
+    data: {
+        id: number;
+        confirmed: PlayerInfo[]
     }
 }
+
+export interface ParticipantsData {
+    data: {
+        confirmed: ParticipantsField[];
+    };
+}
+
 
 export interface ParticipantActionsProps {
     refetch?: () => void;
     participantsData: ParticipantsField;
-    phoneFormatter: () => void;
+    phoneFormatter: (arg: string) => string;
 }
 
 
@@ -91,16 +110,7 @@ export interface ModalInviteProp {
     buttonContextTwo: string;
 }
 
-export interface ParticipantField {
-    id: number;
-    player_name: string;
-    player_phone: number;
-    player_height: number;
-    player_account_holder: string;
-    player_account_bank: string;
-    player_account_number: number;
-    participation_status: string;
-}
+
 
 export interface BoxProp {
     titleOne: string;

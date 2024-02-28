@@ -2,29 +2,29 @@ import { useState } from "react";
 import { cancelParticipationStatus } from "../../../api/gameHost";
 import { ModalRemoveUserFromMatch } from "../../modal_box/ModalRemoveUserFromMatch";
 import {
-  ConfirmedUsersProps,
-  ParticipantsField,
+  ParticipantActionsProps,
+  PlayerInfo,
 } from "../../../interface/gameInterface";
 
 export const UsersConfirmedTab = ({
-  refetch,
   participantsData,
   phoneFormatter,
-}: ConfirmedUsersProps) => {
+}: ParticipantActionsProps) => {
   const [removeUserModal, setRemoveUserModal] = useState(false);
   const handleShowModal = () => {
     setRemoveUserModal(true);
   };
 
   const handleRemoveFromGame = (userId: number) => {
-    cancelParticipationStatus(participantsData?.data.id, userId);
-    refetch();
+    const participantId = participantsData?.data.id;
+    cancelParticipationStatus(participantId, userId);
+
     setRemoveUserModal(false);
   };
 
   return (
     <>
-      {participantsData?.data.confirmed.map((user: ParticipantsField) => {
+      {participantsData?.data.confirmed.map((user: PlayerInfo) => {
         return (
           <div key={user.id} className="flex justify-between text-[14px]">
             <div className="flex items-center gap-4">
@@ -49,7 +49,6 @@ export const UsersConfirmedTab = ({
             {removeUserModal && (
               <ModalRemoveUserFromMatch
                 userId={user.id}
-                userName={user.player_name}
                 handleRemoveFromGame={handleRemoveFromGame}
               />
             )}
