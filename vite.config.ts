@@ -10,6 +10,10 @@ export default defineConfig({
     environment: 'jsdom',
     css: true
   },
+  build: {
+    manifest: true,
+    target: "esnext",
+  },
   server: {
     port: 3000,
   },
